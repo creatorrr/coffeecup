@@ -27,6 +27,7 @@ coffeecup.doctypes =
   'default': '<!DOCTYPE html>'
   '5': '<!DOCTYPE html>'
   'xml': '<?xml version="1.0" encoding="utf-8" ?>'
+  'twiml': '<?xml version="1.0" encoding="utf-8" ?>'
   'transitional': '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">'
   'strict': '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">'
   'frameset': '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Frameset//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-frameset.dtd">'
@@ -88,6 +89,10 @@ elements =
   # Support for xml sitemap elements
   xml: 'urlset url loc lastmod changefreq priority'
 
+  # Support for twiml sitemap elements
+  twiml: 'say play gather record sms dial number sip client conference queue
+enqueue leave hangup redirect reject pause message'
+
   obsolete: 'applet acronym bgsound dir frameset noframes isindex listing
  nextid noembed plaintext rb strike xmp big blink center font marquee multicol
  nobr spacer tt'
@@ -106,7 +111,7 @@ merge_elements = (args...) ->
 # For each name in this list that is also present in the input template code,
 # a function with the same name will be added to the compiled template.
 coffeecup.tags = merge_elements 'regular', 'obsolete', 'void', 'obsolete_void',
-  'svg', 'xml'
+  'svg', 'xml', 'twiml'
 
 # Public/customizable list of elements that should be rendered self-closed.
 coffeecup.self_closing = merge_elements 'void', 'obsolete_void'
@@ -200,7 +205,7 @@ skeleton = (data = {}) ->
       text "<#{name}"
       @render_idclass(idclass) if idclass
       @render_attrs(attrs) if attrs
-      
+
       text " #{inline}" if inline
 
       if name in @self_closing
