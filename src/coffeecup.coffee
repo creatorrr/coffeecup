@@ -90,8 +90,8 @@ elements =
   xml: 'urlset url loc lastmod changefreq priority'
 
   # Support for twiml sitemap elements
-  twiml: 'say play gather record sms dial number sip client conference queue
-enqueue leave hangup redirect reject pause message'
+  twiml: 'Say Play Gather Record Sms Dial Number Sip Client Conference Queue
+Enqueue Leave Hangup Redirect Reject Pause Message'
 
   obsolete: 'applet acronym bgsound dir frameset noframes isindex listing
  nextid noembed plaintext rb strike xmp big blink center font marquee multicol
